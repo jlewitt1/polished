@@ -1,22 +1,21 @@
 // @flow
 
 /**
- * CSS to style the selection psuedo-element.
+ * @description CSS to style the selection psuedo-element.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...selection({
  *     'backgroundColor': 'blue'
  *   }, 'section')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${selection({'backgroundColor': 'blue'}, 'section')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * 'div': {
  *   'section::-moz-selection': {
@@ -28,6 +27,12 @@
  * }
  */
 
+/**
+  * @name selection
+  * @param {object} styles
+  * @param {string} parent
+  * @returns {object}
+  */
 function selection(styles: Object, parent?: string = ''): Object {
   return {
     [`${parent}::-moz-selection`]: {

@@ -42,10 +42,9 @@ function generateSources(
 }
 
 /**
- * CSS for a @font-face declaration.
+ * @description CSS for a @font-face declaration.
  *
- * @example
- * // Styles as object basic usage
+ * @example Styles as object basic usage
  * const styles = {
  *    ...fontFace({
  *      'fontFamily': 'Sans-Pro'
@@ -53,7 +52,7 @@ function generateSources(
  *    })
  * }
  *
- * // styled-components basic usage
+ * @example styled-components basic usage
  * injectGlobal`${
  *   fontFace({
  *     'fontFamily': 'Sans-Pro'
@@ -61,7 +60,7 @@ function generateSources(
  *   }
  * )}`
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * '@font-face': {
  *   'fontFamily': 'Sans-Pro',
@@ -69,6 +68,19 @@ function generateSources(
  * }
  */
 
+/**
+  * @name fontFace
+  * @param {Object} fontFamily
+  * @param {Object} fontFilePath
+  * @param {Object} fontStretch
+  * @param {Object} fontStyle
+  * @param {Object} fontVariant
+  * @param {Object} fontWeight
+  * @param {Object} fontFormats
+  * @param {Object} localFonts
+  * @param {Object} unicodeRange
+  * @returns {Object}
+  */
 function fontFace({
   fontFamily,
   fontFilePath,

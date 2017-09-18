@@ -5,28 +5,34 @@ import toHex from '../internalHelpers/_numberToHex'
 import type { RgbColor } from '../types/color'
 
 /**
- * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ * @description Returns a string value for the color. The returned result is the smallest possible hex notation.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: rgb(255, 205, 100),
  *   background: rgb({ red: 255, green: 205, blue: 100 }),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${rgb(255, 205, 100)};
  *   background: ${rgb({ red: 255, green: 205, blue: 100 })};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#ffcd64";
  *   background: "#ffcd64";
  * }
  */
+
+/**
+  * @name rgb
+  * @param {RgbColor | number}
+  * @param {number} green
+  * @param {number} blue
+  * @returns {string}
+  */
 function rgb(value: RgbColor | number, green?: number, blue?: number): string {
   if (
     typeof value === 'number' &&

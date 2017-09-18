@@ -25,20 +25,19 @@ function generateStyles(property: string, valuesWithDefaults: Array<?string>) {
 }
 
 /**
- * A helper that enables shorthand for direction based properties. It accepts a property (hyphenated or camelCased) and up to four values that map to top, right, bottom, and left, respectively. You can optionally pass an empty string to get only the directional values as properties. You can also optionally pass a null argument for a directional value to ignore it.
- * @example
- * // Styles as object usage
+ * @description A helper that enables shorthand for direction based properties. It accepts a property (hyphenated or camelCased) and up to four values that map to top, right, bottom, and left, respectively. You can optionally pass an empty string to get only the directional values as properties. You can also optionally pass a null argument for a directional value to ignore it.
+ *
+ *  @example Styles as object usage
  * const styles = {
  *   ...directionalProperty('padding', '12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${directionalProperty('padding', '12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
- *
+ * @example CSS as JS Output
  * div {
  *   'paddingTop': '12px',
  *   'paddingRight': '24px',
@@ -47,6 +46,12 @@ function generateStyles(property: string, valuesWithDefaults: Array<?string>) {
  * }
  */
 
+/**
+  * @name directionalProperty
+  * @param {string} property
+  * @param {Array<string?>} values
+  * @returns {Object}
+  */
 function directionalProperty(
   property: string,
   ...values: Array<?string>

@@ -25,24 +25,23 @@ function template(state: string): string {
 }
 
 /**
- * Populates selectors that target all text inputs. You can pass optional states to append to the selectors.
- * @example
- * // Styles as object usage
+ * @description Populates selectors that target all text inputs. You can pass optional states to append to the selectors.
+ *
+ * @example Styles as object usage
  * const styles = {
  *   [textInputs('active')]: {
  *     'border': 'none'
  *   }
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   > ${textInputs('active')} {
  *     border: none;
  *   }
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  *  'input[type="color"]:active,
  *  input[type="date"]:active,
  *  input[type="datetime"]:active,
@@ -63,6 +62,11 @@ function template(state: string): string {
  * }
  */
 
+/**
+  * @name textInputs
+  * @param {Array<InteractionState>} states
+  * @returns {string}
+  */
 function textInputs(...states: Array<InteractionState>): string {
   return statefulSelectors(states, template, stateMap)
 }

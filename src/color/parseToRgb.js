@@ -11,16 +11,22 @@ const hslRegex = /^hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$/
 const hslaRegex = /^hsla\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*([-+]?[0-9]*[.]?[0-9]+)\s*\)$/
 
 /**
- * Returns an RgbColor or RgbaColor object. This utility function is only useful
+ * @description Returns an RgbColor or RgbaColor object. This utility function is only useful
  * if want to extract a color component. With the color util `toColorString` you
  * can convert a RgbColor or RgbaColor object back to a string.
  *
- * @example
- * // Assigns `{ red: 255, green: 0, blue: 0 }` to color1
+ * @example Assigns `{ red: 255, green: 0, blue: 0 }` to color1
  * const color1 = 'rgb(255, 0, 0)';
- * // Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
+ *
+ * @example Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
  * const color2 = 'hsla(210, 10%, 40%, 0.75)';
  */
+
+/**
+  * @name parseToRgb
+  * @param {string} color
+  * @returns {RgbColor | RgbaColor}
+  */
 function parseToRgb(color: string): RgbColor | RgbaColor {
   if (typeof color !== 'string') {
     throw new Error(

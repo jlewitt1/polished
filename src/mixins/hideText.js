@@ -1,22 +1,21 @@
 // @flow
 
 /**
- * CSS to hide text to show a background image in a SEO-friendly way.
+ * @description CSS to hide text to show a background image in a SEO-friendly way.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   'backgroundImage': 'url(logo.png)',
  *   ...hideText(),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   backgroundImage: url(logo.png);
  *   ${hideText()};
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * 'div': {
  *   'backgroundImage': 'url(logo.png)',
@@ -26,6 +25,10 @@
  * }
  */
 
+/**
+  * @name hideText
+  * @returns {object}
+  */
 function hideText(): Object {
   return {
     textIndent: '101%',

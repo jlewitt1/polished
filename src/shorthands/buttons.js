@@ -13,23 +13,23 @@ function template(state: string): string {
 }
 
 /**
- * Populates selectors that target all buttons. You can pass optional states to append to the selectors.
- * @example
- * // Styles as object usage
+ * @description Populates selectors that target all buttons. You can pass optional states to append to the selectors.
+ *
+ * @example Styles as object usage
  * const styles = {
  *   [buttons('active')]: {
  *     'border': 'none'
  *   }
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   > ${buttons('active')} {
  *     border: none;
  *   }
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  *
  *  'button:active,
  *  'input[type="button"]:active,
@@ -39,6 +39,11 @@ function template(state: string): string {
  * }
  */
 
+/**
+  * @name buttons
+  * @param {Array<InteractionState>} states
+  * @returns {string}
+  */
 function buttons(...states: Array<InteractionState>): string {
   return statefulSelectors(states, template, stateMap)
 }

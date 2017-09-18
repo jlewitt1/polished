@@ -2,14 +2,14 @@
 import directionalProperty from '../helpers/directionalProperty'
 
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ *
+ *  @example Styles as object usage
  * const styles = {
  *   ...borderColor('red', 'green', 'blue', 'yellow')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${borderColor('red', 'green', 'blue', 'yellow')}
  * `
@@ -24,6 +24,11 @@ import directionalProperty from '../helpers/directionalProperty'
  * }
  */
 
+/**
+  * @name borderColor
+  * @param {Array<string?>} values
+  * @returns {Object}
+  */
 function borderColor(...values: Array<?string>): Object {
   return directionalProperty('borderColor', ...values)
 }

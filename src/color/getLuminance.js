@@ -2,10 +2,9 @@
 import parseToRgb from './parseToRgb'
 
 /**
- * Returns a number (float) representing the luminance of a color.
+ * @description Returns a number (float) representing the luminance of a color.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff',
  *   background: getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
@@ -13,20 +12,25 @@ import parseToRgb from './parseToRgb'
  *                             'rgba(255, 57, 149, 1)',
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff'};
  *   background: ${getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
  *                             'rgba(58, 133, 255, 1)' :
  *                             'rgba(255, 57, 149, 1)'};
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * div {
  *   background: "#CCCD64";
  *   background: "rgba(58, 133, 255, 1)";
  * }
  */
+
+/**
+  * @name getLuminance
+  * @param {string} color
+  * @returns {number}
+  */
 function getLuminance(color: string): number {
   const rgbColor: { [string]: number } = parseToRgb(color)
   const [r, g, b] = Object.keys(rgbColor).map(key => {

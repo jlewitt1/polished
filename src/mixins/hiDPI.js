@@ -1,24 +1,23 @@
 // @flow
 
 /**
- * Generates a media query to target HiDPI devices.
+ * @description Generates a media query to target HiDPI devices.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *  [hiDPI(1.5)]: {
  *    width: 200px;
  *  }
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${hiDPI(1.5)} {
  *     width: 200px;
  *   }
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * '@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
  *  only screen and (min--moz-device-pixel-ratio: 1.5),
@@ -29,6 +28,11 @@
  * }
  */
 
+/**
+  * @name hiDPI
+  * @param {number} ratio
+  * @returns {string}
+  */
 function hiDPI(ratio?: number = 1.3): string {
   return `
     @media only screen and (-webkit-min-device-pixel-ratio: ${ratio}),

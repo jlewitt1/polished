@@ -59,26 +59,30 @@ type TimingFunction =
   | 'easeInOutSine'
 
 /**
- * String to represent common easing functions as demonstrated here: (github.com/jaukia/easie).
+ * @description String to represent common easing functions as demonstrated here: (github.com/jaukia/easie).
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   'transitionTimingFunction': timingFunctions('easeInQuad')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  *  const div = styled.div`
  *   transitionTimingFunction: ${timingFunctions('easeInQuad')};
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * 'div': {
  *   'transitionTimingFunction': 'cubic-bezier(0.550,  0.085, 0.680, 0.530)',
  * }
  */
 
+/**
+  * @name timingFunctions
+  * @param {TimingFunction} timingFunction
+  * @returns {string}
+  */
 function timingFunctions(timingFunction: TimingFunction): string {
   return functionsMap[timingFunction]
 }

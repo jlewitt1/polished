@@ -1,20 +1,19 @@
 // @flow
 
 /**
- * CSS to represent truncated text with an ellipsis.
+ * @description CSS to represent truncated text with an ellipsis.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...ellipsis('250px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${ellipsis('250px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div: {
  *   'display': 'inline-block',
@@ -26,6 +25,11 @@
  * }
  */
 
+/**
+  * @name ellipsis
+  * @param {string} width
+  * @returns {object}
+  */
 function ellipsis(width?: string = '100%'): Object {
   return {
     display: 'inline-block',

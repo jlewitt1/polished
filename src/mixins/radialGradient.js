@@ -44,10 +44,9 @@ function constructGradientValue(
 }
 
 /**
- * CSS for declaring a radial gradient, including a fallback background-color. The fallback is either the first color-stop or an explicitly passed fallback color.
+ * @description CSS for declaring a radial gradient, including a fallback background-color. The fallback is either the first color-stop or an explicitly passed fallback color.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...radialGradient({
  *     colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
@@ -57,7 +56,7 @@ function constructGradientValue(
  *   })
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${radialGradient({
  *     colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
@@ -67,7 +66,7 @@ function constructGradientValue(
  *   })}
  *`
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div: {
  *   'backgroundColor': '#00FFFF',
@@ -75,6 +74,15 @@ function constructGradientValue(
  * }
  */
 
+/**
+  * @name radialGradient
+  * @param {Object} colorStops
+  * @param {Object} extent
+  * @param {Object} fallback
+  * @param {Object} position
+  * @param {Object} shape
+  * @return {Object}
+  */
 function radialGradient({
   colorStops,
   extent,

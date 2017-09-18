@@ -2,19 +2,19 @@
 import capitalizeString from '../internalHelpers/_capitalizeString'
 
 /**
- * Shorthand that accepts a value for side and a value for radius and applies the radius value to both corners of the side.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts a value for side and a value for radius and applies the radius value to both corners of the side.
+ *
+ *  @example Styles as object usage
  * const styles = {
  *   ...borderRadius('top', '5px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${borderRadius('top', '5px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'borderTopRightRadius': '5px',
@@ -22,6 +22,12 @@ import capitalizeString from '../internalHelpers/_capitalizeString'
  * }
  */
 
+/**
+  * @name borderRadius
+  * @param {string} side
+  * @param {string} radius
+  * @returns {Object}
+  */
 function borderRadius(side: string, radius: string): Object {
   const uppercaseSide = capitalizeString(side)
   if (!radius || typeof radius !== 'string') {

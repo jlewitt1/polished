@@ -4,28 +4,35 @@ import hslToHex from '../internalHelpers/_hslToHex'
 import type { HslColor } from '../types/color'
 
 /**
- * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ * @description Returns a string value for the color. The returned result is the smallest possible hex notation.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: hsl(359, 0.75, 0.4),
  *   background: hsl({ hue: 360, saturation: 0.75, lightness: 0.4 }),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${hsl(359, 0.75, 0.4)};
  *   background: ${hsl({ hue: 360, saturation: 0.75, lightness: 0.4 })};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  *
  * element {
  *   background: "#b3191c";
  *   background: "#b3191c";
  * }
  */
+
+/**
+  * @name hsl
+  * @param {HslColor | number} value
+  * @param {number} saturation
+  * @param {number} lightness
+  * @returns {string}
+  */
 function hsl(
   value: HslColor | number,
   saturation?: number,

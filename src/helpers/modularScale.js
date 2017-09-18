@@ -44,26 +44,32 @@ type Ratio =
   | 'doubleOctave'
 
 /**
- * Establish consistent measurements and spacial relationships throughout your projects by incrementing up or down a defined scale. We provide a list of commonly used scales as pre-defined variables, see below.
- * @example
- * // Styles as object usage
+ * @description Establish consistent measurements and spacial relationships throughout your projects by incrementing up or down a defined scale. We provide a list of commonly used scales as pre-defined variables, see below.
+ * @example Styles as object usage
  * const styles = {
  *    // Increment two steps up the default scale
  *   'fontSize': modularScale(2)
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *    // Increment two steps up the default scale
  *   fontSize: ${modularScale(2)}
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   'fontSize': '1.77689em'
  * }
  */
+
+/**
+  * @name modularScale
+  * @param {number} steps
+  * @param {number | string} base
+  * @param {Ratio} ratio
+  * @returns {string}
+  */
 function modularScale(
   steps: number,
   base?: number | string = '1em',

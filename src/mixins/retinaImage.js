@@ -3,22 +3,21 @@
 import hiDPI from './hiDPI'
 
 /**
- * A helper to generate a retina background image and non-retina
+ * @description A helper to generate a retina background image and non-retina
  * background image. The retina background image will output to a HiDPI media query. The mixin uses
  * a _2x.png filename suffix by default.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *  ...retinaImage('my-img')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${retinaImage('my-img')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  * div {
  *   backgroundImage: 'url(my-img.png)',
  *   '@media only screen and (-webkit-min-device-pixel-ratio: 1.3),
@@ -30,6 +29,16 @@ import hiDPI from './hiDPI'
  *   }
  * }
  */
+
+/**
+  * @name retinaImage
+  * @param {string} filename
+  * @param {string} backgroundSize
+  * @param {string} extension
+  * @param {string} retinaFileName
+  * @param {string} retinaSuffix
+  * @returns {Object}
+  */
 function retinaImage(
   filename: string,
   backgroundSize?: string,

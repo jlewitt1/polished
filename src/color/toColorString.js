@@ -32,12 +32,11 @@ const errMsg =
   'Passed invalid argument to toColorString, please pass a RgbColor, RgbaColor, HslColor or HslaColor object.'
 
 /**
- * Converts a RgbColor, RgbaColor, HslColor or HslaColor object to a color string.
+ * @description Converts a RgbColor, RgbaColor, HslColor or HslaColor object to a color string.
  * This util is useful in case you only know on runtime which color object is
  * used. Otherwise we recommend to rely on `rgb`, `rgba`, `hsl` or `hsla`.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: toColorString({ red: 255, green: 205, blue: 100 }),
  *   background: toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 }),
@@ -45,7 +44,7 @@ const errMsg =
  *   background: toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 }),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${toColorString({ red: 255, green: 205, blue: 100 })};
  *   background: ${toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 })};
@@ -53,7 +52,7 @@ const errMsg =
  *   background: ${toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 })};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#ffcd64";
  *   background: "rgba(255,205,100,0.72)";
@@ -62,6 +61,11 @@ const errMsg =
  * }
  */
 
+/**
+  * @name toColorString
+  * @param {object} color
+  * @return {object}
+  */
 function toColorString(color: Object): string {
   if (typeof color !== 'object') throw new Error(errMsg)
   if (isRgba(color)) return rgba(color)

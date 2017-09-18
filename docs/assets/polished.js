@@ -38,20 +38,19 @@ function generateStyles(property, valuesWithDefaults) {
 }
 
 /**
- * A helper that enables shorthand for direction based properties. It accepts a property (hyphenated or camelCased) and up to four values that map to top, right, bottom, and left, respectively. You can optionally pass an empty string to get only the directional values as properties. You can also optionally pass a null argument for a directional value to ignore it.
- * @example
- * // Styles as object usage
+ * @description A helper that enables shorthand for direction based properties. It accepts a property (hyphenated or camelCased) and up to four values that map to top, right, bottom, and left, respectively. You can optionally pass an empty string to get only the directional values as properties. You can also optionally pass a null argument for a directional value to ignore it.
+ *
+ *  @example Styles as object usage
  * const styles = {
  *   ...directionalProperty('padding', '12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${directionalProperty('padding', '12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
- *
+ * @example CSS as JS Output
  * div {
  *   'paddingTop': '12px',
  *   'paddingRight': '24px',
@@ -60,6 +59,12 @@ function generateStyles(property, valuesWithDefaults) {
  * }
  */
 
+/**
+ * @name directionalProperty
+ * @param {string} property
+ * @param {...Array<string?>} values
+ * @returns {Object}
+ */
 function directionalProperty(property) {
   for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     values[_key - 1] = arguments[_key];
@@ -91,26 +96,29 @@ var endsWith = function (string, suffix) {
 //      
 
 /**
- * Strip the unit from a given CSS value, returning just the number. (or the original value if an invalid string was passed)
+ * @description Strip the unit from a given CSS value, returning just the number. (or the original value if an invalid string was passed)
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   '--dimension': stripUnit('100px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   --dimension: ${stripUnit('100px')}
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   '--dimension': 100
  * }
  */
 
+/**
+ * @name stripUnit
+ * @param {string} value
+ * @returns {number | string}
+ */
 function stripUnit(value) {
   var unitlessValue = parseFloat(value);
   if (isNaN(unitlessValue)) return value;
@@ -157,24 +165,23 @@ var pxtoFactory$1 = function pxtoFactory$1(to) {
 
 //      
 /**
- * Convert pixel value to ems. The default base value is 16px, but can be changed by passing a
+ * @description Convert pixel value to ems. The default base value is 16px, but can be changed by passing a
  * second argument to the function.
  * @function
  * @param {string|number} pxval
  * @param {string|number} [base='16px']
- * @example
- * // Styles as object usage
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   'height': em('16px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   height: ${em('16px')}
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   'height': '1em'
  * }
@@ -203,32 +210,38 @@ var ratioNames = {
   majorEleventh: 2.667,
   majorTwelfth: 3,
   doubleOctave: 4
-};
 
-/** */
+  /** */
 
-/**
- * Establish consistent measurements and spacial relationships throughout your projects by incrementing up or down a defined scale. We provide a list of commonly used scales as pre-defined variables, see below.
- * @example
- * // Styles as object usage
- * const styles = {
- *    // Increment two steps up the default scale
- *   'fontSize': modularScale(2)
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *    // Increment two steps up the default scale
- *   fontSize: ${modularScale(2)}
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   'fontSize': '1.77689em'
- * }
- */
-function modularScale(steps) {
+  /**
+   * @description Establish consistent measurements and spacial relationships throughout your projects by incrementing up or down a defined scale. We provide a list of commonly used scales as pre-defined variables, see below.
+   * @example Styles as object usage
+   * const styles = {
+   *    // Increment two steps up the default scale
+   *   'fontSize': modularScale(2)
+   * }
+   *
+   * @example styled-components usage
+   * const div = styled.div`
+   *    // Increment two steps up the default scale
+   *   fontSize: ${modularScale(2)}
+   * `
+   *
+   * @example CSS in JS Output
+   *
+   * element {
+   *   'fontSize': '1.77689em'
+   * }
+   */
+
+  /**
+   * @name modularScale
+   * @param {number} steps
+   * @param {number | string} base 
+   * @param {Ratio} ratio
+   * @returns
+   */
+};function modularScale(steps) {
   var base = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '1em';
   var ratio = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'perfectFourth';
 
@@ -252,23 +265,23 @@ function modularScale(steps) {
 //      
 
 /**
- * Convert pixel value to rems. The default base value is 16px, but can be changed by passing a
+ * @description Convert pixel value to rems. The default base value is 16px, but can be changed by passing a
  * second argument to the function.
  * @function
  * @param {string|number} pxval
  * @param {string|number} [base='16px']
- * @example
- * // Styles as object usage
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   'height': rem('16px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   height: ${rem('16px')}
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  *
  * element {
  *   'height': '1rem'
@@ -445,20 +458,18 @@ var taggedTemplateLiteral = function (strings, raw) {
 //      
 
 /**
- * CSS to contain a float (credit to CSSMojo).
+ * @description CSS to contain a float (credit to CSSMojo).
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *    ...clearFix(),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${clearFix()}
  * `
- *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * '&::after': {
  *   'clear': 'both',
@@ -467,6 +478,11 @@ var taggedTemplateLiteral = function (strings, raw) {
  * }
  */
 
+/**
+ * @name clearFix
+ * @param {string} parent
+ * @returns {object} 
+ */
 function clearFix() {
   var parent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '&';
 
@@ -481,20 +497,19 @@ function clearFix() {
 //      
 
 /**
- * CSS to represent truncated text with an ellipsis.
+ * @description CSS to represent truncated text with an ellipsis.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...ellipsis('250px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${ellipsis('250px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div: {
  *   'display': 'inline-block',
@@ -506,6 +521,11 @@ function clearFix() {
  * }
  */
 
+/**
+ * @name ellipsis
+ * @param {string} width
+ * @returns {object}
+ */
 function ellipsis() {
   var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '100%';
 
@@ -547,10 +567,9 @@ function generateSources(fontFilePath, localFonts, fileFormats) {
 }
 
 /**
- * CSS for a @font-face declaration.
+ * @description CSS for a @font-face declaration.
  *
- * @example
- * // Styles as object basic usage
+ * @example Styles as object basic usage
  * const styles = {
  *    ...fontFace({
  *      'fontFamily': 'Sans-Pro'
@@ -558,7 +577,7 @@ function generateSources(fontFilePath, localFonts, fileFormats) {
  *    })
  * }
  *
- * // styled-components basic usage
+ * @example styled-components basic usage
  * injectGlobal`${
  *   fontFace({
  *     'fontFamily': 'Sans-Pro'
@@ -566,7 +585,7 @@ function generateSources(fontFilePath, localFonts, fileFormats) {
  *   }
  * )}`
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * '@font-face': {
  *   'fontFamily': 'Sans-Pro',
@@ -574,6 +593,19 @@ function generateSources(fontFilePath, localFonts, fileFormats) {
  * }
  */
 
+/**
+ * @name fontFace
+ * @param {Object} fontFamily
+ * @param {Object} fontFilePath
+ * @param {Object} fontStretch
+ * @param {Object} fontStyle
+ * @param {Object} fontVariant
+ * @param {Object} fontWeight
+ * @param {Object} fontFormats
+ * @param {Object} localFonts
+ * @param {Object} unicodeRange
+ * @returns {Object}
+ */
 function fontFace(_ref) {
   var fontFamily = _ref.fontFamily,
       fontFilePath = _ref.fontFilePath,
@@ -608,31 +640,29 @@ function fontFace(_ref) {
       fontVariant: fontVariant,
       fontWeight: fontWeight
     }
-  };
 
-  // Removes undefined fields for cleaner css object.
-  return JSON.parse(JSON.stringify(fontFaceDeclaration));
+    // Removes undefined fields for cleaner css object.
+  };return JSON.parse(JSON.stringify(fontFaceDeclaration));
 }
 
 //      
 
 /**
- * CSS to hide text to show a background image in a SEO-friendly way.
+ * @description CSS to hide text to show a background image in a SEO-friendly way.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   'backgroundImage': 'url(logo.png)',
  *   ...hideText(),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   backgroundImage: url(logo.png);
  *   ${hideText()};
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * 'div': {
  *   'backgroundImage': 'url(logo.png)',
@@ -642,6 +672,10 @@ function fontFace(_ref) {
  * }
  */
 
+/**
+ * @name hideText
+ * @returns {object}
+ */
 function hideText() {
   return {
     textIndent: '101%',
@@ -653,24 +687,23 @@ function hideText() {
 //      
 
 /**
- * Generates a media query to target HiDPI devices.
+ * @description Generates a media query to target HiDPI devices.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *  [hiDPI(1.5)]: {
  *    width: 200px;
  *  }
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${hiDPI(1.5)} {
  *     width: 200px;
  *   }
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * '@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
  *  only screen and (min--moz-device-pixel-ratio: 1.5),
@@ -681,6 +714,11 @@ function hideText() {
  * }
  */
 
+/**
+ * @name hiDPI
+ * @param {number} ratio
+ * @returns {string}
+ */
 function hiDPI() {
   var ratio = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1.3;
 
@@ -833,24 +871,29 @@ function mergeRules(baseRules, additionalRules) {
 }
 
 /**
- * CSS to normalize abnormalities across browsers (normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css)
+ * @description CSS to normalize abnormalities across browsers (normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css)
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *    ...normalize(),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * injectGlobal`${normalize()}`
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * html {
  *   fontFamily: 'sans-serif',
  *   lineHeight: 1.15,
  *   textSizeAdjust: 100%,
  * } ...
+ */
+
+/**
+ * @name normalize
+ * @param {boolean} excludeOpinionated
+ * @returns {object}
  */
 function normalize(excludeOpinionated) {
   if (excludeOpinionated) return unopinionatedRules;
@@ -860,20 +903,19 @@ function normalize(excludeOpinionated) {
 //      
 
 /**
- * CSS to style the selection psuedo-element.
+ * @description CSS to style the selection psuedo-element.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...placeholder({'color': 'blue'})
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.input`
  *    ${placeholder({'color': 'blue'})}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * 'input': {
  *   '&:-moz-placeholder': {
@@ -891,6 +933,11 @@ function normalize(excludeOpinionated) {
  * },
  */
 
+/**
+ * @name placeholder
+ * @param {object, string}
+ * @returns {object}
+ */
 function placeholder(styles) {
   var _ref;
 
@@ -929,10 +976,9 @@ function constructGradientValue(literals) {
 }
 
 /**
- * CSS for declaring a radial gradient, including a fallback background-color. The fallback is either the first color-stop or an explicitly passed fallback color.
+ * @description CSS for declaring a radial gradient, including a fallback background-color. The fallback is either the first color-stop or an explicitly passed fallback color.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...radialGradient({
  *     colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
@@ -942,7 +988,7 @@ function constructGradientValue(literals) {
  *   })
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${radialGradient({
  *     colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
@@ -952,7 +998,7 @@ function constructGradientValue(literals) {
  *   })}
  *`
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div: {
  *   'backgroundColor': '#00FFFF',
@@ -960,6 +1006,15 @@ function constructGradientValue(literals) {
  * }
  */
 
+/**
+ * @name radialGradient
+ * @param {Object} colorStops
+ * @param {Object} extent
+ * @param {Object} fallback
+ * @param {Object} position
+ * @param {Object} shape
+ * @return {Object}
+ */
 function radialGradient(_ref) {
   var colorStops = _ref.colorStops,
       extent = _ref.extent,
@@ -979,22 +1034,21 @@ function radialGradient(_ref) {
 //      
 
 /**
- * A helper to generate a retina background image and non-retina
+ * @description A helper to generate a retina background image and non-retina
  * background image. The retina background image will output to a HiDPI media query. The mixin uses
  * a _2x.png filename suffix by default.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *  ...retinaImage('my-img')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${retinaImage('my-img')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  * div {
  *   backgroundImage: 'url(my-img.png)',
  *   '@media only screen and (-webkit-min-device-pixel-ratio: 1.3),
@@ -1005,6 +1059,16 @@ function radialGradient(_ref) {
  *     backgroundImage: 'url(my-img_2x.png)',
  *   }
  * }
+ */
+
+/**
+ * @name retinaImage
+ * @param {string} filename
+ * @param {string} backgroundSize
+ * @param {string} extension
+ * @param {string} retinaFileName
+ * @param {string} retinaSuffix
+ * @returns {Object}
  */
 function retinaImage(filename, backgroundSize) {
   var extension = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'png';
@@ -1029,22 +1093,21 @@ function retinaImage(filename, backgroundSize) {
 //      
 
 /**
- * CSS to style the selection psuedo-element.
+ * @description CSS to style the selection psuedo-element.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...selection({
  *     'backgroundColor': 'blue'
  *   }, 'section')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${selection({'backgroundColor': 'blue'}, 'section')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * 'div': {
  *   'section::-moz-selection': {
@@ -1056,6 +1119,12 @@ function retinaImage(filename, backgroundSize) {
  * }
  */
 
+/**
+ * @name selection
+ * @param {object} styles
+ * @param {string} parent
+ * @returns {object}
+ */
 function selection(styles) {
   var _ref;
 
@@ -1094,33 +1163,36 @@ var functionsMap = {
   easeInOutQuart: 'cubic-bezier(0.770,  0.000, 0.175, 1.000)',
   easeInOutQuint: 'cubic-bezier(0.860,  0.000, 0.070, 1.000)',
   easeInOutSine: 'cubic-bezier(0.445,  0.050, 0.550, 0.950)'
-};
-/* eslint-enable key-spacing */
+  /* eslint-enable key-spacing */
 
-/** */
+  /** */
 
-/**
- * String to represent common easing functions as demonstrated here: (github.com/jaukia/easie).
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   'transitionTimingFunction': timingFunctions('easeInQuad')
- * }
- *
- * // styled-components usage
- *  const div = styled.div`
- *   transitionTimingFunction: ${timingFunctions('easeInQuad')};
- * `
- *
- * // CSS as JS Output
- *
- * 'div': {
- *   'transitionTimingFunction': 'cubic-bezier(0.550,  0.085, 0.680, 0.530)',
- * }
- */
+  /**
+   * @description String to represent common easing functions as demonstrated here: (github.com/jaukia/easie).
+   *
+   * @example Styles as object usage
+   * const styles = {
+   *   'transitionTimingFunction': timingFunctions('easeInQuad')
+   * }
+   *
+   * @example styled-components usage
+   *  const div = styled.div`
+   *   transitionTimingFunction: ${timingFunctions('easeInQuad')};
+   * `
+   *
+   * @example CSS as JS Output
+   *
+   * 'div': {
+   *   'transitionTimingFunction': 'cubic-bezier(0.550,  0.085, 0.680, 0.530)',
+   * }
+   */
 
-function timingFunctions(timingFunction) {
+  /**
+   * @name timingFunctions
+   * @param {TimingFunction} timingFunction
+   * @returns {string}
+   */
+};function timingFunctions(timingFunction) {
   return functionsMap[timingFunction];
 }
 
@@ -1150,37 +1222,44 @@ var reverseDirection = {
   right: 'Left',
   top: 'Bottom',
   bottom: 'Top'
-};
 
-/**
- * CSS to represent triangle with any pointing direction with an optional background color. Accepts number or px values for height and width.
- *
- * @example
- * // Styles as object usage
- *
- * const styles = {
- *   ...triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })
- * }
- *
- *
- * // styled-components usage
- * const div = styled.div`
- *   ${triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })}
- *
- *
- * // CSS as JS Output
- *
- * div: {
- *  'borderColor': 'transparent',
- *  'borderLeftColor': 'red !important',
- *  'borderStyle': 'solid',
- *  'borderWidth': '50px 0 50px 100px',
- *  'height': '0',
- *  'width': '0',
- * }
- */
+  /**
+   * @description CSS to represent triangle with any pointing direction with an optional background color. Accepts number or px values for height and width.
+   *
+   * @example Styles as object usage
+   *
+   * const styles = {
+   *   ...triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })
+   * }
+   *
+   *
+   * @example styled-components usage
+   * const div = styled.div`
+   *   ${triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })}
+   *
+   *
+   * @example CSS as JS Output
+   *
+   * div: {
+   *  'borderColor': 'transparent',
+   *  'borderLeftColor': 'red !important',
+   *  'borderStyle': 'solid',
+   *  'borderWidth': '50px 0 50px 100px',
+   *  'height': '0',
+   *  'width': '0',
+   * }
+   */
 
-function triangle(_ref) {
+  /**
+   * @name triangle
+   * @param {object} pointingDirection
+   * @param {object} height
+   * @param {object} width
+   * @param {object} foregroundColor
+   * @param {object} backgroundColor
+   * @returns {object}
+   */
+};function triangle(_ref) {
   var pointingDirection = _ref.pointingDirection,
       height = _ref.height,
       width = _ref.width,
@@ -1206,20 +1285,19 @@ function triangle(_ref) {
 //      
 
 /**
- * Provides an easy way to change the `wordWrap` property.
+ * @description Provides an easy way to change the `wordWrap` property.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...wordWrap('break-word')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${wordWrap('break-word')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * const styles = {
  *   overflowWrap: 'break-word',
@@ -1228,6 +1306,11 @@ function triangle(_ref) {
  * }
  */
 
+/**
+ * @name wordWrap
+ * @param {string} wrap
+ * @returns {Object}
+ */
 function wordWrap() {
   var wrap = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'break-word';
 
@@ -1444,13 +1527,12 @@ var namedColorMap = {
   whitesmoke: 'f5f5f5',
   yellow: 'ff0',
   yellowgreen: '9acd32'
-};
 
-/**
- * Checks if a string is a CSS named color and returns its equivalent hex value, otherwise returns the original color.
- * @private
- */
-function nameToHex(color) {
+  /**
+   * Checks if a string is a CSS named color and returns its equivalent hex value, otherwise returns the original color.
+   * @private
+   */
+};function nameToHex(color) {
   if (typeof color !== 'string') return color;
   var normalizedColorName = color.toLowerCase();
   return namedColorMap[normalizedColorName] ? '#' + namedColorMap[normalizedColorName] : color;
@@ -1465,15 +1547,21 @@ var hslRegex = /^hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$/;
 var hslaRegex = /^hsla\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*([-+]?[0-9]*[.]?[0-9]+)\s*\)$/;
 
 /**
- * Returns an RgbColor or RgbaColor object. This utility function is only useful
+ * @description Returns an RgbColor or RgbaColor object. This utility function is only useful
  * if want to extract a color component. With the color util `toColorString` you
  * can convert a RgbColor or RgbaColor object back to a string.
  *
- * @example
- * // Assigns `{ red: 255, green: 0, blue: 0 }` to color1
+ * @example Assigns `{ red: 255, green: 0, blue: 0 }` to color1
  * const color1 = 'rgb(255, 0, 0)';
- * // Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
+ * 
+ * @example Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
  * const color2 = 'hsla(210, 10%, 40%, 0.75)';
+ */
+
+/**
+ * @name parseToRgb
+ * @param {string} color
+ * @returns {RgbColor | RgbaColor}
  */
 function parseToRgb(color) {
   if (typeof color !== 'string') {
@@ -1589,15 +1677,21 @@ function rgbToHsl(color) {
 //      
 
 /**
- * Returns an HslColor or HslaColor object. This utility function is only useful
+ * @description Returns an HslColor or HslaColor object. This utility function is only useful
  * if want to extract a color component. With the color util `toColorString` you
  * can convert a HslColor or HslaColor object back to a string.
  *
- * @example
- * // Assigns `{ red: 255, green: 0, blue: 0 }` to color1
+ * @example Assigns `{ red: 255, green: 0, blue: 0 }` to color1
  * const color1 = 'rgb(255, 0, 0)';
- * // Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
+ * 
+ * @example Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
  * const color2 = 'hsla(210, 10%, 40%, 0.75)';
+ */
+
+/**
+ * @name parseToHsl
+ * @param {string} color
+ * @returns {HslColor | HslaColor}
  */
 function parseToHsl(color) {
   // Note: At a later stage we can optimize this function as right now a hsl
@@ -1627,27 +1721,33 @@ function numberToHex(value) {
 //      
 
 /**
- * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ * @description Returns a string value for the color. The returned result is the smallest possible hex notation.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: rgb(255, 205, 100),
  *   background: rgb({ red: 255, green: 205, blue: 100 }),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${rgb(255, 205, 100)};
  *   background: ${rgb({ red: 255, green: 205, blue: 100 })};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#ffcd64";
  *   background: "#ffcd64";
  * }
+ */
+
+/**
+ * @name rgb
+ * @param {RgbColor | number}
+ * @param {number} green
+ * @param {number} blue
+ * @returns {string}
  */
 function rgb(value, green, blue) {
   if (typeof value === 'number' && typeof green === 'number' && typeof blue === 'number') {
@@ -1662,12 +1762,11 @@ function rgb(value, green, blue) {
 //      
 
 /**
- * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
+ * @description Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
  *
  * Can also be used to fade a color by passing a hex value or named CSS color along with an alpha value.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: rgba(255, 205, 100, 0.7),
  *   background: rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 }),
@@ -1676,7 +1775,7 @@ function rgb(value, green, blue) {
  *   background: rgba('black', 0.7),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${rgba(255, 205, 100, 0.7)};
  *   background: ${rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 })};
@@ -1685,8 +1784,7 @@ function rgb(value, green, blue) {
  *   background: ${rgba('black', 0.7)};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "rgba(255,205,100,0.7)";
  *   background: "rgba(255,205,100,0.7)";
@@ -1694,6 +1792,15 @@ function rgb(value, green, blue) {
  *   background: "rgba(255,255,255,0.4)";
  *   background: "rgba(0,0,0,0.7)";
  * }
+ */
+
+/**
+ * @name rgba  
+ * @param {RgbaColor | number | string}
+ * @param {number} secondValue
+ * @param {number} thirdValue
+ * @param {number} fourthValue
+ * @returns {string}
  */
 function rgba(firstValue, secondValue, thirdValue, fourthValue) {
   if (typeof firstValue === 'string' && typeof secondValue === 'number') {
@@ -1724,27 +1831,34 @@ function hslToHex(hue, saturation, lightness) {
 //      
 
 /**
- * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ * @description Returns a string value for the color. The returned result is the smallest possible hex notation.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: hsl(359, 0.75, 0.4),
  *   background: hsl({ hue: 360, saturation: 0.75, lightness: 0.4 }),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${hsl(359, 0.75, 0.4)};
  *   background: ${hsl({ hue: 360, saturation: 0.75, lightness: 0.4 })};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  *
  * element {
  *   background: "#b3191c";
  *   background: "#b3191c";
  * }
+ */
+
+/**
+ * @name hsl
+ * @param {Hslcolor | number} value
+ * @param {number} saturation
+ * @param {number} lightness
+ * @returns {string}
  */
 function hsl(value, saturation, lightness) {
   if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number') {
@@ -1759,30 +1873,37 @@ function hsl(value, saturation, lightness) {
 //      
 
 /**
- * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
+ * @description Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: hsla(359, 0.75, 0.4, 0.7),
  *   background: hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 }),
  *   background: hsla(359, 0.75, 0.4, 1),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${hsla(359, 0.75, 0.4, 0.7)};
  *   background: ${hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 })};
  *   background: ${hsla(359, 0.75, 0.4, 1)};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "rgba(179,25,28,0.7)";
  *   background: "rgba(179,25,28,0.7)";
  *   background: "#b3191c";
  * }
+ */
+
+/**
+ * @name hsla
+ * @param {HslaColor | number} value
+ * @param {number} saturation
+ * @param {number} lightness
+ * @param {number} alpha
+ * @returns {string}
  */
 function hsla(value, saturation, lightness, alpha) {
   if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number' && typeof alpha === 'number') {
@@ -1814,12 +1935,11 @@ var isHsla = function isHsla(color) {
 var errMsg = 'Passed invalid argument to toColorString, please pass a RgbColor, RgbaColor, HslColor or HslaColor object.';
 
 /**
- * Converts a RgbColor, RgbaColor, HslColor or HslaColor object to a color string.
+ * @description Converts a RgbColor, RgbaColor, HslColor or HslaColor object to a color string.
  * This util is useful in case you only know on runtime which color object is
  * used. Otherwise we recommend to rely on `rgb`, `rgba`, `hsl` or `hsla`.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: toColorString({ red: 255, green: 205, blue: 100 }),
  *   background: toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 }),
@@ -1827,7 +1947,7 @@ var errMsg = 'Passed invalid argument to toColorString, please pass a RgbColor, 
  *   background: toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 }),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${toColorString({ red: 255, green: 205, blue: 100 })};
  *   background: ${toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 })};
@@ -1835,7 +1955,7 @@ var errMsg = 'Passed invalid argument to toColorString, please pass a RgbColor, 
  *   background: ${toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 })};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#ffcd64";
  *   background: "rgba(255,205,100,0.72)";
@@ -1844,6 +1964,11 @@ var errMsg = 'Passed invalid argument to toColorString, please pass a RgbColor, 
  * }
  */
 
+/**
+ * @name toColorString
+ * @param {object} color
+ * @return {object}
+ */
 function toColorString(color) {
   if ((typeof color === 'undefined' ? 'undefined' : _typeof(color)) !== 'object') throw new Error(errMsg);
   if (isRgba(color)) return rgba(color);
@@ -1884,28 +2009,34 @@ function curry(f) {
 //      
 
 /**
- * Changes the hue of the color. Hue is a number between 0 to 360. The first
+ * @description Changes the hue of the color. Hue is a number between 0 to 360. The first
  * argument for adjustHue is the amount of degrees the color is rotated along
  * the color wheel.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: adjustHue(180, '#448'),
  *   background: adjustHue(180, 'rgba(101,100,205,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${adjustHue(180, '#448')};
  *   background: ${adjustHue(180, 'rgba(101,100,205,0.7)')};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#888844";
  *   background: "rgba(136,136,68,0.7)";
  * }
+ */
+
+/**
+ * @name adjustHue
+ * @param {number} degree
+ * @param {string} color
+ * @returns {string}
  */
 function adjustHue(degree, color) {
   var hslColor = parseToHsl(color);
@@ -1920,26 +2051,31 @@ var curriedAdjustHue = /*#__PURE__*/curry(adjustHue); // eslint-disable-line spa
 //      
 
 /**
- * Returns the complement of the provided color. This is identical to adjustHue(180, <color>).
+ * @description Returns the complement of the provided color. This is identical to adjustHue(180, <color>).
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: complement('#448'),
  *   background: complement('rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${complement('#448')};
  *   background: ${complement('rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#884";
  *   background: "rgba(153,153,153,0.7)";
  * }
+ */
+
+/**
+ * @name complement
+ * @param {string} color
+ * @returns {string}
  */
 function complement(color) {
   var hslColor = parseToHsl(color);
@@ -1957,7 +2093,7 @@ function guard(lowerBoundary, upperBoundary, value) {
 //      
 
 /**
- * Returns a string value for the darkened color.
+ * @description Returns a string value for the darkened color.
  *
  * @example
  * // Styles as object usage
@@ -1966,18 +2102,24 @@ function guard(lowerBoundary, upperBoundary, value) {
  *   background: darken(0.2, 'rgba(255,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${darken(0.2, '#FFCD64')};
  *   background: ${darken(0.2, 'rgba(255,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#ffbd31";
  *   background: "rgba(255,189,49,0.7)";
  * }
+ */
+
+/**
+ * @name darken
+ * @param {number} amount
+ * @param {string} color
+ * @returns {string}
  */
 function darken(amount, color) {
   var hslColor = parseToHsl(color);
@@ -1992,28 +2134,34 @@ var curriedDarken = /*#__PURE__*/curry(darken); // eslint-disable-line spaced-co
 //      
 
 /**
- * Decreases the intensity of a color. Its range is between 0 to 1. The first
+ * @description Decreases the intensity of a color. Its range is between 0 to 1. The first
  * argument of the desaturate function is the amount by how much the color
  * intensity should be decreased.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: desaturate(0.2, '#CCCD64'),
  *   background: desaturate(0.2, 'rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${desaturate(0.2, '#CCCD64')};
  *   background: ${desaturate(0.2, 'rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#b8b979";
  *   background: "rgba(184,185,121,0.7)";
  * }
+ */
+
+/**
+ * @name desaturate
+ * @param {number} amount
+ * @param {string} color
+ * @returns {string}
  */
 function desaturate(amount, color) {
   var hslColor = parseToHsl(color);
@@ -2027,10 +2175,9 @@ var curriedDesaturate = /*#__PURE__*/curry(desaturate); // eslint-disable-line s
 
 //      
 /**
- * Returns a number (float) representing the luminance of a color.
+ * @description Returns a number (float) representing the luminance of a color.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff',
  *   background: getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
@@ -2038,19 +2185,24 @@ var curriedDesaturate = /*#__PURE__*/curry(desaturate); // eslint-disable-line s
  *                             'rgba(255, 57, 149, 1)',
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff'};
  *   background: ${getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
  *                             'rgba(58, 133, 255, 1)' :
  *                             'rgba(255, 57, 149, 1)'};
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * div {
  *   background: "#CCCD64";
  *   background: "rgba(58, 133, 255, 1)";
  * }
+ */
+
+/**
+ * @name getLuminance
+ * @param {string} color
+ * @returns {number}
  */
 function getLuminance(color) {
   var rgbColor = parseToRgb(color);
@@ -2070,26 +2222,31 @@ function getLuminance(color) {
 //      
 
 /**
- * Converts the color to a grayscale, by reducing its saturation to 0.
+ * @description Converts the color to a grayscale, by reducing its saturation to 0.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: grayscale('#CCCD64'),
  *   background: grayscale('rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${grayscale('#CCCD64')};
  *   background: ${grayscale('rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#999";
  *   background: "rgba(153,153,153,0.7)";
  * }
+ */
+
+/**
+ * @name grayscale
+ * @param {string} color
+ * @returns {string}
  */
 function grayscale(color) {
   return toColorString(_extends({}, parseToHsl(color), {
@@ -2100,27 +2257,31 @@ function grayscale(color) {
 //      
 
 /**
- * Inverts the red, green and blue values of a color.
+ * @description Inverts the red, green and blue values of a color.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: invert('#CCCD64'),
  *   background: invert('rgba(101,100,205,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${invert('#CCCD64')};
  *   background: ${invert('rgba(101,100,205,0.7)')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#33329b";
  *   background: "rgba(154,155,50,0.7)";
  * }
+ */
+
+/**
+ * @name invert
+ * @param {string} color
+ * @returns {string}
  */
 function invert(color) {
   // parse color string to rgb
@@ -2135,27 +2296,32 @@ function invert(color) {
 //      
 
 /**
- * Returns a string value for the lightened color.
+ * @description Returns a string value for the lightened color.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: lighten(0.2, '#CCCD64'),
  *   background: lighten(0.2, 'rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${lighten(0.2, '#FFCD64')};
  *   background: ${lighten(0.2, 'rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#e5e6b1";
  *   background: "rgba(229,230,177,0.7)";
  * }
+ */
+
+/**
+ * @name lighten
+ * @param {number} amount
+ * @param {string} color
+ * @returns {string}
  */
 function lighten(amount, color) {
   var hslColor = parseToHsl(color);
@@ -2170,35 +2336,41 @@ var curriedLighten = /*#__PURE__*/curry(lighten); // eslint-disable-line spaced-
 //      
 
 /**
- * Mixes two colors together by calculating the average of each of the RGB components.
+ * @description Mixes two colors together by calculating the average of each of the RGB components.
  *
  * By default the weight is 0.5 meaning that half of the first color and half the second
  * color should be used. Optionally the weight can be modified by providing a number
  * as the first argument. 0.25 means that a quarter of the first color and three quarters
  * of the second color should be used.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: mix(0.5, '#f00', '#00f')
  *   background: mix(0.25, '#f00', '#00f')
  *   background: mix(0.5, 'rgba(255, 0, 0, 0.5)', '#00f')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${mix(0.5, '#f00', '#00f')};
  *   background: ${mix(0.25, '#f00', '#00f')};
  *   background: ${mix(0.5, 'rgba(255, 0, 0, 0.5)', '#00f')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#7f007f";
  *   background: "#3f00bf";
  *   background: "rgba(63, 0, 191, 0.75)";
  * }
+ */
+
+/**
+ * @name mix
+ * @param {number} weight
+ * @param {string} color
+ * @param {string} otherColor
+ * @returns {string}
  */
 function mix() {
   var weight = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.5;
@@ -2213,11 +2385,10 @@ function mix() {
   var parsedColor2 = parseToRgb(otherColor);
   var color2 = _extends({}, parsedColor2, {
     alpha: typeof parsedColor2.alpha === 'number' ? parsedColor2.alpha : 1
-  });
 
-  // The formular is copied from the original Sass implementation:
-  // http://sass-lang.com/documentation/Sass/Script/Functions.html#mix-instance_method
-  var alphaDelta = color1.alpha - color2.alpha;
+    // The formular is copied from the original Sass implementation:
+    // http://sass-lang.com/documentation/Sass/Script/Functions.html#mix-instance_method
+  });var alphaDelta = color1.alpha - color2.alpha;
   var x = weight * 2 - 1;
   var y = x * alphaDelta === -1 ? x : x + alphaDelta;
   var z = 1 + x * alphaDelta;
@@ -2239,31 +2410,36 @@ var curriedMix = /*#__PURE__*/curry(mix); // eslint-disable-line spaced-comment
 
 //      
 /**
- * Increases the opacity of a color. Its range for the amount is between 0 to 1.
+ * @description Increases the opacity of a color. Its range for the amount is between 0 to 1.
  *
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: opacify(0.1, 'rgba(255, 255, 255, 0.9)');
  *   background: opacify(0.2, 'hsla(0, 0%, 100%, 0.5)'),
  *   background: opacify(0.5, 'rgba(255, 0, 0, 0.2)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${opacify(0.1, 'rgba(255, 255, 255, 0.9)')};
  *   background: ${opacify(0.2, 'hsla(0, 0%, 100%, 0.5)')},
  *   background: ${opacify(0.5, 'rgba(255, 0, 0, 0.2)')},
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#fff";
  *   background: "rgba(255,255,255,0.7)";
  *   background: "rgba(255,0,0,0.7)";
  * }
+ */
+
+/**
+ * @name opacify
+ * @param {number} amount
+ * @param {string} color
+ * @returns {string}
  */
 function opacify(amount, color) {
   var parsedColor = parseToRgb(color);
@@ -2279,26 +2455,24 @@ var curriedOpacify = /*#__PURE__*/curry(opacify); // eslint-disable-line spaced-
 
 //      
 /**
- * Selects black or white for best contrast depending on the luminosity of the given color.
+ * @description Selects black or white for best contrast depending on the luminosity of the given color.
  * Follows W3C specs for readability at https://www.w3.org/TR/WCAG20-TECHS/G18.html
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   color: readableColor('#000'),
  *   color: readableColor('papayawhip'),
  *   color: readableColor('rgb(255,0,0)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   color: ${readableColor('#000')};
  *   color: ${readableColor('papayawhip')};
  *   color: ${readableColor('rgb(255,0,0)')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   color: "#fff";
  *   color: "#fff";
@@ -2306,6 +2480,11 @@ var curriedOpacify = /*#__PURE__*/curry(opacify); // eslint-disable-line spaced-
  * }
  */
 
+/**
+ * @name readableColor
+ * @param {string} color
+ * @returns {string}
+ */
 function readableColor(color) {
   return getLuminance(color) > 0.179 ? '#000' : '#fff';
 }
@@ -2316,29 +2495,34 @@ var curriedReadableColor = /*#__PURE__*/curry(readableColor); // eslint-disable-
 //      
 
 /**
- * Increases the intensity of a color. Its range is between 0 to 1. The first
+ * @description Increases the intensity of a color. Its range is between 0 to 1. The first
  * argument of the saturate function is the amount by how much the color
  * intensity should be increased.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: saturate(0.2, '#CCCD64'),
  *   background: saturate(0.2, 'rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${saturate(0.2, '#FFCD64')};
  *   background: ${saturate(0.2, 'rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#e0e250";
  *   background: "rgba(224,226,80,0.7)";
  * }
+ */
+
+/**
+ * @name saturate
+ * @param {number} amount
+ * @param {string} color
+ * @return {string}
  */
 function saturate(amount, color) {
   var hslColor = parseToHsl(color);
@@ -2353,27 +2537,33 @@ var curriedSaturate = /*#__PURE__*/curry(saturate); // eslint-disable-line space
 //      
 
 /**
- * Sets the hue of a color to the provided value. The hue range can be
+ * @description Sets the hue of a color to the provided value. The hue range can be
  * from 0 and 359.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: setHue(42, '#CCCD64'),
  *   background: setHue(244, 'rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${setHue(42, '#CCCD64')};
  *   background: ${setHue(244, 'rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#cdae64";
  *   background: "rgba(107,100,205,0.7)";
  * }
+ */
+
+/**
+ * @name setHue
+ * @param {number} hue
+ * @param {string} color
+ * @returns {string}
  */
 function setHue(hue, color) {
   return toColorString(_extends({}, parseToHsl(color), {
@@ -2387,27 +2577,33 @@ var curriedSetHue = /*#__PURE__*/curry(setHue); // eslint-disable-line spaced-co
 //      
 
 /**
- * Sets the lightness of a color to the provided value. The lightness range can be
+ * @description Sets the lightness of a color to the provided value. The lightness range can be
  * from 0 and 1.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: setLightness(0.2, '#CCCD64'),
  *   background: setLightness(0.75, 'rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${setLightness(0.2, '#CCCD64')};
  *   background: ${setLightness(0.75, 'rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#4d4d19";
  *   background: "rgba(223,224,159,0.7)";
  * }
+ */
+
+/**
+ * @name setLightness
+ * @param {number} lightness
+ * @param {string} color
+ * @return {string}
  */
 function setLightness(lightness, color) {
   return toColorString(_extends({}, parseToHsl(color), {
@@ -2421,27 +2617,33 @@ var curriedSetLightness = /*#__PURE__*/curry(setLightness); // eslint-disable-li
 //      
 
 /**
- * Sets the saturation of a color to the provided value. The lightness range can be
+ * @description Sets the saturation of a color to the provided value. The lightness range can be
  * from 0 and 1.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: setSaturation(0.2, '#CCCD64'),
  *   background: setSaturation(0.75, 'rgba(204,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${setSaturation(0.2, '#CCCD64')};
  *   background: ${setSaturation(0.75, 'rgba(204,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  * element {
  *   background: "#adad84";
  *   background: "rgba(228,229,76,0.7)";
  * }
+ */
+
+/**
+ * @name setSaturation
+ * @param {number} saturation
+ * @param {string} color
+ * @return {string}
  */
 function setSaturation(saturation, color) {
   return toColorString(_extends({}, parseToHsl(color), {
@@ -2455,28 +2657,32 @@ var curriedSetSaturation = /*#__PURE__*/curry(setSaturation); // eslint-disable-
 //      
 
 /**
- * Shades a color by mixing it with black. `shade` can produce
+ * @description Shades a color by mixing it with black. `shade` can produce
  * hue shifts, where as `darken` manipulates the luminance channel and therefore
  * doesn't produce hue shifts.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: shade(0.25, '#00f')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${shade(0.25, '#00f')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#00003f";
  * }
  */
 
+/**
+ * @name shade
+ * @param {number} percentage
+ * @param {string} color
+ * @return {string}
+ */
 function shade(percentage, color) {
   if (typeof percentage !== 'number' || percentage > 1 || percentage < -1) {
     throw new Error('Passed an incorrect argument to shade, please pass a percentage less than or equal to 1 and larger than or equal to -1.');
@@ -2493,28 +2699,32 @@ var curriedShade = /*#__PURE__*/curry(shade); // eslint-disable-line spaced-comm
 //      
 
 /**
- * Tints a color by mixing it with white. `tint` can produce
+ * @description Tints a color by mixing it with white. `tint` can produce
  * hue shifts, where as `lighten` manipulates the luminance channel and therefore
  * doesn't produce hue shifts.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: tint(0.25, '#00f')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${tint(0.25, '#00f')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#bfbfff";
  * }
  */
 
+/**
+ * @name tint
+ * @param {number} percentage
+ * @param {string} color
+ * @return {string}
+ */
 function tint(percentage, color) {
   if (typeof percentage !== 'number' || percentage > 1 || percentage < -1) {
     throw new Error('Passed an incorrect argument to tint, please pass a percentage less than or equal to 1 and larger than or equal to -1.');
@@ -2530,31 +2740,35 @@ var curriedTint = /*#__PURE__*/curry(tint); // eslint-disable-line spaced-commen
 
 //      
 /**
- * Decreases the opacity of a color. Its range for the amount is between 0 to 1.
+ * @description Decreases the opacity of a color. Its range for the amount is between 0 to 1.
  *
- *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: transparentize(0.1, '#fff');
  *   background: transparentize(0.2, 'hsl(0, 0%, 100%)'),
  *   background: transparentize(0.5, 'rgba(255, 0, 0, 0.8)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${transparentize(0.1, '#fff')};
  *   background: ${transparentize(0.2, 'hsl(0, 0%, 100%)')},
  *   background: ${transparentize(0.5, 'rgba(255, 0, 0, 0.8)')},
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "rgba(255,255,255,0.9)";
  *   background: "rgba(255,255,255,0.8)";
  *   background: "rgba(255,0,0,0.3)";
  * }
+ */
+
+/**
+ * @name transparentize
+ * @param {number} amount
+ * @param {string} color
+ * @return {string}
  */
 function transparentize(amount, color) {
   var parsedColor = parseToRgb(color);
@@ -2573,40 +2787,46 @@ var curriedTransparentize = /*#__PURE__*/curry(transparentize); // eslint-disabl
 /** */
 
 /**
- * Shorthand for easily setting the animation property. Allows either multiple arrays with animations
+ * @description Shorthand for easily setting the animation property. Allows either multiple arrays with animations
  * or a single animation spread over the arguments.
- * @example
- * // Styles as object usage
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...animation(['rotate', '1s', 'ease-in-out'], ['colorchange', '2s'])
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${animation(['rotate', '1s', 'ease-in-out'], ['colorchange', '2s'])}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'animation': 'rotate 1s ease-in-out, colorchange 2s'
  * }
- * @example
- * // Styles as object usage
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...animation('rotate', '1s', 'ease-in-out')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${animation('rotate', '1s', 'ease-in-out')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'animation': 'rotate 1s ease-in-out'
  * }
+ */
+
+/**
+ * @name animation
+ * @param {...Array<(Array<AnimationProperty> | AnimationProperty)>} args
+ * @return {object}
  */
 function animation() {
   for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
@@ -2637,25 +2857,29 @@ function animation() {
 //      
 
 /**
- * Shorthand that accepts any number of backgroundImage values as parameters for creating a single background statement.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts any number of backgroundImage values as parameters for creating a single background statement.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...backgroundImages('url("/image/background.jpg")', 'linear-gradient(red, green)')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${backgroundImages('url("/image/background.jpg")', 'linear-gradient(red, green)')}
  * `
  *
- * // CSS as JS Output
- *
+ * @example CSS as JS Output
  * div {
  *   'backgroundImage': 'url("/image/background.jpg"), linear-gradient(red, green)'
  * }
  */
 
+/**
+ * @name backgroundImages
+ * @param {...Array<string>} properties
+ * @return {object}
+ */
 function backgroundImages() {
   for (var _len = arguments.length, properties = Array(_len), _key = 0; _key < _len; _key++) {
     properties[_key] = arguments[_key];
@@ -2669,23 +2893,28 @@ function backgroundImages() {
 //      
 
 /**
- * Shorthand that accepts any number of background values as parameters for creating a single background statement.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts any number of background values as parameters for creating a single background statement.
+ * @example Styles as object usage
  * const styles = {
  *   ...backgrounds('url("/image/background.jpg")', 'linear-gradient(red, green)', 'center no-repeat')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${backgrounds('url("/image/background.jpg")', 'linear-gradient(red, green)', 'center no-repeat')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'background': 'url("/image/background.jpg"), linear-gradient(red, green), center no-repeat'
  * }
+ */
+
+/**
+ * @name backgrounds
+ * @param {...Array<string>} properties
+ * @returns {Object}
  */
 function backgrounds() {
   for (var _len = arguments.length, properties = Array(_len), _key = 0; _key < _len; _key++) {
@@ -2699,14 +2928,14 @@ function backgrounds() {
 
 //      
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ *
+ *  @example Styles as object usage
  * const styles = {
  *   ...borderColor('red', 'green', 'blue', 'yellow')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${borderColor('red', 'green', 'blue', 'yellow')}
  * `
@@ -2721,6 +2950,11 @@ function backgrounds() {
  * }
  */
 
+/**
+ * @name borderColor
+ * @param {...Array<string?>} values
+ * @returns {Object}
+ */
 function borderColor() {
   for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
     values[_key] = arguments[_key];
@@ -2731,19 +2965,19 @@ function borderColor() {
 
 //      
 /**
- * Shorthand that accepts a value for side and a value for radius and applies the radius value to both corners of the side.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts a value for side and a value for radius and applies the radius value to both corners of the side.
+ *
+ *  @example Styles as object usage
  * const styles = {
  *   ...borderRadius('top', '5px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${borderRadius('top', '5px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'borderTopRightRadius': '5px',
@@ -2751,6 +2985,12 @@ function borderColor() {
  * }
  */
 
+/**
+ * @name borderRadius
+ * @param {string} side
+ * @param {string} radius
+ * @returns {Object}
+ */
 function borderRadius(side, radius) {
   var uppercaseSide = capitalizeString(side);
   if (!radius || typeof radius !== 'string') {
@@ -2773,19 +3013,19 @@ function borderRadius(side, radius) {
 
 //      
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...borderStyle('solid', 'dashed', 'dotted', 'double')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${borderStyle('solid', 'dashed', 'dotted', 'double')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'borderTopStyle': 'solid',
@@ -2795,6 +3035,11 @@ function borderRadius(side, radius) {
  * }
  */
 
+/**
+ * @name borderStyle
+ * @param {...Array<string?>} values
+ * @returns {Object}
+ */
 function borderStyle() {
   for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
     values[_key] = arguments[_key];
@@ -2805,19 +3050,19 @@ function borderStyle() {
 
 //      
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...borderWidth('12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${borderWidth('12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'borderTopWidth': '12px',
@@ -2825,6 +3070,12 @@ function borderStyle() {
  *   'borderBottomWidth': '36px',
  *   'borderLeftWidth': '48px'
  * }
+ */
+
+/**
+ * @name borderWidth
+ * @param {...Array<string?>} width
+ * @returns {Object}
  */
 function borderWidth() {
   for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
@@ -2868,23 +3119,23 @@ function template(state) {
 }
 
 /**
- * Populates selectors that target all buttons. You can pass optional states to append to the selectors.
- * @example
- * // Styles as object usage
+ * @description Populates selectors that target all buttons. You can pass optional states to append to the selectors.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   [buttons('active')]: {
  *     'border': 'none'
  *   }
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   > ${buttons('active')} {
  *     border: none;
  *   }
  * `
  *
- * // CSS in JS Output
+ * @example CSS in JS Output
  *
  *  'button:active,
  *  'input[type="button"]:active,
@@ -2894,6 +3145,11 @@ function template(state) {
  * }
  */
 
+/**
+ * @name buttons
+ * @param {...Array<InteractionState>} states
+ * @returns {string}
+ */
 function buttons() {
   for (var _len = arguments.length, states = Array(_len), _key = 0; _key < _len; _key++) {
     states[_key] = arguments[_key];
@@ -2904,19 +3160,19 @@ function buttons() {
 
 //      
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...margin('12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${margin('12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'marginTop': '12px',
@@ -2926,6 +3182,11 @@ function buttons() {
  * }
  */
 
+/**
+ * @name margin
+ * @param {...Array<string?>} values
+ * @returns {Object}
+ */
 function margin() {
   for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
     values[_key] = arguments[_key];
@@ -2936,19 +3197,19 @@ function margin() {
 
 //      
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...padding('12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${padding('12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'paddingTop': '12px',
@@ -2958,6 +3219,11 @@ function margin() {
  * }
  */
 
+/**
+ * @name padding
+ * @param {...Array<string?>}
+ * @returns {Object}
+ */
 function padding() {
   for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
     values[_key] = arguments[_key];
@@ -2970,20 +3236,19 @@ function padding() {
 var positionMap$1 = ['absolute', 'fixed', 'relative', 'static', 'sticky'];
 
 /**
- * Shorthand accepts up to five values, including null to skip a value, and maps them to their respective directions. The first value can optionally be a position keyword.
- * @example
- * // Styles as object usage
+ * @description Shorthand accepts up to five values, including null to skip a value, and maps them to their respective directions. The first value can optionally be a position keyword.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...position('12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${position('12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
- *
+ * @example CSS as JS Output
  * div {
  *   'top': '12px',
  *   'right': '24px',
@@ -2991,18 +3256,17 @@ var positionMap$1 = ['absolute', 'fixed', 'relative', 'static', 'sticky'];
  *   'left': '48px'
  * }
  *
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...position('absolute', '12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${position('absolute', '12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
- *
+ * @example CSS as JS Output
  * div {
  *   'position': 'absolute',
  *   'top': '12px',
@@ -3012,6 +3276,12 @@ var positionMap$1 = ['absolute', 'fixed', 'relative', 'static', 'sticky'];
  * }
  */
 
+/**
+ * @name position
+ * @param {string | null} positionKeyword
+ * @param {...Array<string?>} values
+ * @returns {Object}
+ */
 function position(positionKeyword) {
   for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     values[_key - 1] = arguments[_key];
@@ -3030,26 +3300,31 @@ function position(positionKeyword) {
 //      
 
 /**
- * Shorthand to set the height and width properties in a single statement.
- * @example
- * // Styles as object usage
+ * @description Shorthand to set the height and width properties in a single statement.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...size('300px', '250px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${size('300px', '250px')}
  * `
  *
- * // CSS as JS Output
- *
+ * @example CSS as JS Output
  * div {
  *   'height': '300px',
  *   'width': '250px',
  * }
  */
 
+/**
+ * @name size
+ * @param {string} height
+ * @param {string} width
+ * @returns {Object}
+ */
 function size(height) {
   var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : height;
 
@@ -3067,24 +3342,23 @@ function template$1(state) {
 }
 
 /**
- * Populates selectors that target all text inputs. You can pass optional states to append to the selectors.
- * @example
- * // Styles as object usage
+ * @description Populates selectors that target all text inputs. You can pass optional states to append to the selectors.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   [textInputs('active')]: {
  *     'border': 'none'
  *   }
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   > ${textInputs('active')} {
  *     border: none;
  *   }
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  *  'input[type="color"]:active,
  *  input[type="date"]:active,
  *  input[type="datetime"]:active,
@@ -3105,6 +3379,11 @@ function template$1(state) {
  * }
  */
 
+/**
+ * @name textInputs
+ * @param {...Array<InteractionState>} states
+ * @returns {string}
+ */
 function textInputs() {
   for (var _len = arguments.length, states = Array(_len), _key = 0; _key < _len; _key++) {
     states[_key] = arguments[_key];
@@ -3116,25 +3395,29 @@ function textInputs() {
 //      
 
 /**
- * Shorthand that accepts any number of transition values as parameters for creating a single transition statement.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts any number of transition values as parameters for creating a single transition statement.
+ * 
+ * @example Styles as object usage
  * const styles = {
  *   ...transitions('opacity 1.0s ease-in 0s', 'width 2.0s ease-in 2s')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${transitions('opacity 1.0s ease-in 0s', 'width 2.0s ease-in 2s')}
  * `
  *
- * // CSS as JS Output
- *
+ * @example CSS as JS Output
  * div {
  *   'transition': 'opacity 1.0s ease-in 0s, width 2.0s ease-in 2s'
  * }
  */
 
+/**
+ * @name transitions
+ * @param {...Array<string>} properties
+ * @returns {Object}
+ */
 function transitions() {
   for (var _len = arguments.length, properties = Array(_len), _key = 0; _key < _len; _key++) {
     properties[_key] = arguments[_key];

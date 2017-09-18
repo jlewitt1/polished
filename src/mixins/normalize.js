@@ -266,18 +266,17 @@ function mergeRules(baseRules: Object, additionalRules: Object): Object {
 }
 
 /**
- * CSS to normalize abnormalities across browsers (normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css)
+ * @description CSS to normalize abnormalities across browsers (normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css)
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *    ...normalize(),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * injectGlobal`${normalize()}`
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * html {
  *   fontFamily: 'sans-serif',
@@ -285,6 +284,12 @@ function mergeRules(baseRules: Object, additionalRules: Object): Object {
  *   textSizeAdjust: 100%,
  * } ...
  */
+
+/**
+  * @name normalize
+  * @param {boolean} excludeOpinionated
+  * @returns {object}
+  */
 function normalize(excludeOpinionated?: boolean): Object {
   if (excludeOpinionated) return unopinionatedRules
   return mergeRules(unopinionatedRules, opinionatedRules)

@@ -1,20 +1,18 @@
 // @flow
 
 /**
- * CSS to contain a float (credit to CSSMojo).
+ * @description CSS to contain a float (credit to CSSMojo).
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *    ...clearFix(),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${clearFix()}
  * `
- *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * '&::after': {
  *   'clear': 'both',
@@ -23,6 +21,11 @@
  * }
  */
 
+/**
+  * @name clearFix
+  * @param {string} parent
+  * @returns {object}
+  */
 function clearFix(parent?: string = '&'): Object {
   const pseudoSelector = `${parent}::after`
   return {

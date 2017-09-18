@@ -4,28 +4,32 @@ import mix from './mix'
 import curry from '../internalHelpers/_curry'
 
 /**
- * Shades a color by mixing it with black. `shade` can produce
+ * @description Shades a color by mixing it with black. `shade` can produce
  * hue shifts, where as `darken` manipulates the luminance channel and therefore
  * doesn't produce hue shifts.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: shade(0.25, '#00f')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${shade(0.25, '#00f')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#00003f";
  * }
  */
 
+/**
+  * @name shade
+  * @param {number} percentage
+  * @param {string} color
+  * @return {string}
+  */
 function shade(percentage: number, color: string): string {
   if (typeof percentage !== 'number' || percentage > 1 || percentage < -1) {
     throw new Error(

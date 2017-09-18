@@ -42,22 +42,21 @@ const reverseDirection = {
 }
 
 /**
- * CSS to represent triangle with any pointing direction with an optional background color. Accepts number or px values for height and width.
+ * @description CSS to represent triangle with any pointing direction with an optional background color. Accepts number or px values for height and width.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  *
  * const styles = {
  *   ...triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })
  * }
  *
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })}
  *
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div: {
  *  'borderColor': 'transparent',
@@ -69,6 +68,15 @@ const reverseDirection = {
  * }
  */
 
+/**
+  * @name triangle
+  * @param {object} pointingDirection
+  * @param {object} height
+  * @param {object} width
+  * @param {object} foregroundColor
+  * @param {object} backgroundColor
+  * @returns {object}
+  */
 function triangle({
   pointingDirection,
   height,

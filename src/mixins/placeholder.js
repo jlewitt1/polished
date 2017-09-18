@@ -1,20 +1,19 @@
 // @flow
 
 /**
- * CSS to style the selection psuedo-element.
+ * @description CSS to style the selection psuedo-element.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   ...placeholder({'color': 'blue'})
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.input`
  *    ${placeholder({'color': 'blue'})}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * 'input': {
  *   '&:-moz-placeholder': {
@@ -32,6 +31,11 @@
  * },
  */
 
+/**
+  * @name placeholder
+  * @param {object, string}
+  * @returns {object}
+  */
 function placeholder(styles: Object, parent?: string = '&'): Object {
   return {
     [`${parent}::-webkit-input-placeholder`]: {

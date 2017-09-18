@@ -6,7 +6,7 @@ import guard from '../internalHelpers/_guard'
 import curry from '../internalHelpers/_curry'
 
 /**
- * Returns a string value for the darkened color.
+ * @description Returns a string value for the darkened color.
  *
  * @example
  * // Styles as object usage
@@ -15,19 +15,25 @@ import curry from '../internalHelpers/_curry'
  *   background: darken(0.2, 'rgba(255,205,100,0.7)'),
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${darken(0.2, '#FFCD64')};
  *   background: ${darken(0.2, 'rgba(255,205,100,0.7)')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#ffbd31";
  *   background: "rgba(255,189,49,0.7)";
  * }
  */
+
+/**
+  * @name darken
+  * @param {number} amount
+  * @param {string} color
+  * @returns {string}
+  */
 function darken(amount: number, color: string): string {
   const hslColor = parseToHsl(color)
   return toColorString({

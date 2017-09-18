@@ -2,19 +2,19 @@
 import directionalProperty from '../helpers/directionalProperty'
 
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ *
+ * @example Styles as object usage
  * const styles = {
  *   ...borderStyle('solid', 'dashed', 'dotted', 'double')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${borderStyle('solid', 'dashed', 'dotted', 'double')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'borderTopStyle': 'solid',
@@ -24,6 +24,11 @@ import directionalProperty from '../helpers/directionalProperty'
  * }
  */
 
+/**
+  * @name borderStyle
+  * @param {Array<string?>} values
+  * @returns {Object}
+  */
 function borderStyle(...values: Array<?string>): Object {
   return directionalProperty('borderStyle', ...values)
 }

@@ -2,19 +2,19 @@
 import directionalProperty from '../helpers/directionalProperty'
 
 /**
- * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
- * @example
- * // Styles as object usage
+ * @description Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ *
+ * @example Styles as object usage
  * const styles = {
  *   ...margin('12px', '24px', '36px', '48px')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   ${margin('12px', '24px', '36px', '48px')}
  * `
  *
- * // CSS as JS Output
+ * @example CSS as JS Output
  *
  * div {
  *   'marginTop': '12px',
@@ -24,6 +24,11 @@ import directionalProperty from '../helpers/directionalProperty'
  * }
  */
 
+/**
+  * @name margin
+  * @param {Array<string?>} values
+  * @returns {Object}
+  */
 function margin(...values: Array<?string>): Object {
   return directionalProperty('margin', ...values)
 }

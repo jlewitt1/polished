@@ -4,28 +4,32 @@ import mix from './mix'
 import curry from '../internalHelpers/_curry'
 
 /**
- * Tints a color by mixing it with white. `tint` can produce
+ * @description Tints a color by mixing it with white. `tint` can produce
  * hue shifts, where as `lighten` manipulates the luminance channel and therefore
  * doesn't produce hue shifts.
  *
- * @example
- * // Styles as object usage
+ * @example Styles as object usage
  * const styles = {
  *   background: tint(0.25, '#00f')
  * }
  *
- * // styled-components usage
+ * @example styled-components usage
  * const div = styled.div`
  *   background: ${tint(0.25, '#00f')};
  * `
  *
- * // CSS in JS Output
- *
+ * @example CSS in JS Output
  * element {
  *   background: "#bfbfff";
  * }
  */
 
+/**
+  * @name tint
+  * @param {number} percentage
+  * @param {string} color
+  * @return {string}
+  */
 function tint(percentage: number, color: string): string {
   if (typeof percentage !== 'number' || percentage > 1 || percentage < -1) {
     throw new Error(
